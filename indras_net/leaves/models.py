@@ -2,7 +2,7 @@ from django.db import models
 
 class Author(models.Model):
     name = models.CharField(max_length=400, unique=True)
-    description = models.TextField(unique=True, blank=True)
+    description = models.TextField(blank=True)
 
     def __unicode__(self):
         return self.name
@@ -10,13 +10,14 @@ class Author(models.Model):
 
 class Source(models.Model):
     SOURCE_CATEGORY_CHOICES = (
+        ('None', 'None'),
         ('Book', 'Book'),
         ('Website', 'Website'),
         ('Film', 'Film'),
     )
     name = models.CharField(max_length=400, unique=True)
     description = models.TextField(blank=True)
-    category = models.CharField(max_length=400, choices=SOURCE_CATEGORY_CHOICES, default='Website')
+    category = models.CharField(max_length=400, choices=SOURCE_CATEGORY_CHOICES, default='None')
     url = models.URLField(max_length=2048, blank=True, null=True)
 
     def __unicode__(self):
@@ -29,6 +30,7 @@ class Quote(models.Model):
     source = models.ForeignKey(Source)
     date_created = models.DateField(auto_now_add=True)
     date_updated = models.DateField(auto_now=True)
+    starred = models.BooleanField()
 
     def __unicode__(self):
         return self.body

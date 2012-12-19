@@ -8,6 +8,9 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'indras_net.views.home', name='home'),
     # url(r'^indras_net/', include('indras_net.foo.urls')),
+    url(r'^leaves/$', 'leaves.views.index'),
+    url(r'^leaves/authors/$', 'leaves.views.authors'),
+    url(r'^leaves/sources/$', 'leaves.views.sources'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
