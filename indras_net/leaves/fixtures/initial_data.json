@@ -5,10 +5,7 @@
         "fields": {
             "name": "Unknown"
         }
-    }
-]
-
-[
+    },
     {
         "model": "leaves.source",
         "pk": 1,
